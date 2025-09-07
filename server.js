@@ -1,6 +1,9 @@
 const express = require("express");
 const { Pool } = require("pg");
 const cors = require("cors");
+const csrf = require('csurf');
+const csrf = require('csurf');
+const csrf = require('csurf');
 require('dotenv').config();
 
 const app = express();
@@ -11,6 +14,7 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
+app.use(csrf({ cookie: true }));
 
 // ---- Configure Postgres with environment variables ----
 const pool = new Pool({

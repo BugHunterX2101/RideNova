@@ -7,9 +7,11 @@ async function submitRideRequest(source, destination, user_id) {
       destination,
       user_id,
     });
-    console.log("Server Response:", JSON.stringify(response.data));
+    const sanitizedData = JSON.stringify(response.data).replace(/[\r\n\t]/g, ' ');
+    console.log("Server Response:", sanitizedData);
   } catch (err) {
-    console.error("Error:", err.response?.data?.message || err.message);
+    const errorMsg = (err.response?.data?.message || err.message || "").replace(/[\r\n\t]/g, " ");
+    console.error("Error:", errorMsg);
   }
 }
 
