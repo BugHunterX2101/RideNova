@@ -7,9 +7,9 @@ async function submitRideRequest(source, destination, user_id) {
       destination,
       user_id,
     });
-    console.log("Server Response:", response.data);
+    console.log("Server Response:", JSON.stringify(response.data));
   } catch (err) {
-    console.error("Error:", err.message);
+    console.error("Error:", err.response?.data?.message || err.message);
   }
 }
 
